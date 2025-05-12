@@ -2,11 +2,14 @@ package org.testing;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.ScreenshotException;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.io.IOException;
 import java.util.Date;
 
-public class TS_034 {
+public class TS_034 extends BaseClass{
 
     WebDriver driver;
 
@@ -20,15 +23,15 @@ public class TS_034 {
     }
 
     @Test(priority = 1)
-    public void TC_010_redirectsToProductsPage() throws InterruptedException {
+    public void TC_010_redirectsToProductsPage() throws InterruptedException, IOException {
         WebElement shopNowButton = driver.findElement(By.xpath("//button[@id='shopNowButton']"));
         shopNowButton.click();
         Thread.sleep(2000); // wait for redirection
-
+        screenShot("TC_010_redirectsToProductsPage");
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(
                 currentUrl.contains("http://localhost:3000/user#products") || currentUrl.contains("/shop"),
-                "❌ Shopnow button did not redirect to the products page. URL: " + currentUrl
+                " Shopnow button did not redirect to the products page. URL: " + currentUrl
         );
     }
 
