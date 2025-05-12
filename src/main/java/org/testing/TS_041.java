@@ -8,9 +8,10 @@ import org.testng.annotations.*;
 
 import java.util.Date;
 import java.util.List;
+import java.io.IOException;
 import java.time.Duration;
 
-public class TS_041 {
+public class TS_041 extends BaseClass{
 
     private WebDriver driver;
 
@@ -45,18 +46,18 @@ public class TS_041 {
 
     // TC_005 – Check if About cards are clickable (linked or interactive)
     @Test(priority = 2)
-    public void testAboutCardsAreClickable() {
+    public void TC_005_testAboutCardsAreClickable() throws IOException {
         scrollToAboutSection();
         List<WebElement> cards = driver.findElements(By.cssSelector("#about .value-item"));
-
+        screenShot("TC_005_testAboutCardsAreClickable");
         boolean atLeastOneClickable = false;
         for (WebElement card : cards) {
             try {
                 card.click(); // Try clicking
                 atLeastOneClickable = true;
-                break; // If one works, pass the test
+                break; 
             } catch (WebDriverException e) {
-                // Skip if not interactable
+               
             }
         }
 
