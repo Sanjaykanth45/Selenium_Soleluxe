@@ -2,7 +2,6 @@ package org.testing;
 
 import java.io.IOException;
 import java.util.Date;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
