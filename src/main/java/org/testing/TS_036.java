@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import java.util.Date;
 
-public class TS_036 {
+public class TS_036 extends BaseClass {
 
     WebDriver driver;
 
@@ -38,7 +38,7 @@ public class TS_036 {
 
             productLink.click();
             Thread.sleep(2000);
-
+            screenShot("TC_004_productCardNavigation");
             // Wait for detail section to appear
             WebElement detailSection = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("productDetail")));
             Assert.assertTrue(detailSection.isDisplayed(), "Product detail section not visible.");
